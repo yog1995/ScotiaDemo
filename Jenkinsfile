@@ -1,7 +1,7 @@
 node{
     def MavenHome = tool name: 'Maven_Home', type: 'maven'
     stage('Code Checkout'){
-        git branch: 'test', credentialsId: '6ef0006c-d7d9-49c8-b989-f532c8415713', url: 'https://github.com/yog1995/Scotia_Demo.git'
+        git branch: 'main', credentialsId: '6ef0006c-d7d9-49c8-b989-f532c8415713', url: 'https://github.com/yog1995/Scotia_Demo.git'
     }
     stage('Maven Package'){
         bat "${MavenHome}/bin/mvn clean package"
