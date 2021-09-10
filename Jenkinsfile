@@ -9,10 +9,10 @@ node{
     stage('Upload to Nexus'){
         bat "${MavenHome}/bin/mvn deploy"
     }
-    //stage('Sending war file to Docker server'){
-       // sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'scp', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/opt/docker', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+    stage('Sending war file to Docker server'){
+      sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/opt/docker', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/*.war', useSftpForExec: true)], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
        // bat "scp -i /target/*.war ubuntu@18.118.9.192:/opt/docker"
-   // }
+    }
     stage('upload'){
         sshagent(['ec20c5cd-55b2-4766-b20e-aee02356ff41']) {
         bat "scp target/*.war ubuntu@18.118.9.192:/opt/docker"
