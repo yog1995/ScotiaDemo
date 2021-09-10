@@ -9,6 +9,9 @@ node{
     stage('Upload to Nexus'){
         bat "${MavenHome}/bin/mvn deploy"
     }
+	stage('Tomcat Push'){
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'Tomcat', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/opt/apache-tomcat-9.0.52/webapps', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: '**/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+    }
     stage('Sending war file to Docker server'){
         sshPublisher(
 	        publishers: [
