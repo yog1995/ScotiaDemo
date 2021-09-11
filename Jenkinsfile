@@ -19,5 +19,12 @@ node{
    			sh "scp -o StrictHostKeyChecking=no target/maven-web-application*.war ec2-user@18.190.154.239:/opt/apache-tomcat-9.0.52/webapps/"
 		}
 	}
-			
+	stage('Build Docker Image'){
+		withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]){
+			sh "docker login -u yogi1995 -p ${DockerHub}"
+		}
+	}
+	stage('Image Push to DockerHub'){
+		 bat "docker push yogi1995/scotiademo"
+	}	
 }
