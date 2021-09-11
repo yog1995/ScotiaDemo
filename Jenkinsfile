@@ -20,7 +20,7 @@ node{
 		}
 	}
 	stage('Build Docker Image'){
-		withCredentials([string(credentialsId: 'DockerHub', variable: 'DockeHub')]){
+		withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]){
 			sh "docker login -u yogi1995 -p ${DockerHub}"
 		}
 	}
