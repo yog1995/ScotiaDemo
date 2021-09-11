@@ -1,6 +1,5 @@
 node{
-	echo "Jenkins Home ${env.JENKINS_HOME}"
-        def buildNumber = BUILD_NUMBER
+	def buildNumber = BUILD_NUMBER
 	def Maven = tool name: "Maven"
 	
 	stage('Code Checkout'){
@@ -23,9 +22,18 @@ node{
 		withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]){
 			sh "docker login -u yogi1995 -p ${DockerHub}"
 		}
-		sh "docker build -t yogi1995/scotiademo ."
+		sh "docker build -t yogi1995/scotiademo:${buildNumber} ."
 	}
 	stage('Image Push to DockerHub'){
-		 sh "docker push yogi1995/scotiademo"
-	}	
+		sh "docker push yogi1995/scotiademo:{buildNumber}"
+	}
+	stage('Deploy to K8 Cluster'){
+		kubernetesDeploy (
+			configs: 'maven.yml', 
+			kubeConfig: [path: ''], 
+			kubeconfigId: 'K8-Cluster', 
+			secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], 
+			textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+		)
+	}
 }
