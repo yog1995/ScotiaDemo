@@ -25,7 +25,7 @@ node{
 		sh "docker build -t yogi1995/scotiademo:${buildNumber} ."
 	}
 	stage('Image Push to DockerHub'){
-		sh "docker push yogi1995/scotiademo:{buildNumber}"
+		sh "docker push yogi1995/scotiademo:${buildNumber}"
 	}
 	stage('Deploy to K8 Cluster'){
 		kubernetesDeploy (
