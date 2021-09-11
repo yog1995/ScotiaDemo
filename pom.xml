@@ -5,12 +5,16 @@
 	<groupId>com.mt</groupId>
 	<artifactId>maven-web-application</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.0-Snapshot</version>
+	<version>0.0.1-SNAPSHOT</version>
 	
 	<name>maven-web-application</name>
 
 	<description>Maven Web Project for Java Project</description>
 
+	<organization>
+		<name>Mithun Technologies</name>
+		<url>http://mithuntechnologies.com/</url>
+	</organization>
 	
 	<properties>
 		<jdk.version>1.8</jdk.version>
@@ -80,12 +84,18 @@
 		
 		<!-- provided dependencies -->
 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 		
 	</dependencies>
 	
 	<distributionManagement>
 	
-	    <repository>
+		<repository>
 	      <id>nexus</id>
 	      <name>Scotia_Demo-Release</name>
 	      <url>http://3.22.224.189:8081/repository/Scotia_Demo-Release/</url>
