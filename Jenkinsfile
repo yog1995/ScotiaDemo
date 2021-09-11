@@ -47,17 +47,7 @@ node{
         )
     }
 	stage('Deployment in K8'){
-		kubernetesDeploy configs: 'maven.yml', 
-		kubeConfig: [path: ''], 
-		kubeconfigId: 'K8-Config', 
-		secretName: '', 
-		ssh: [sshCredentialsId: '*', sshServer: ''], 
-		textCredentials: [
-			certificateAuthorityData: '', 
-			clientCertificateData: '', 
-			clientKeyData: '', 
-			serverUrl: 'https://'
-			]
+		kubernetesDeploy configs: 'maven.yml', kubeConfig: [path: ''], kubeconfigId: 'K8', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
 	}
 
 }
