@@ -9,7 +9,7 @@ metadata:
 spec:
         containers:
                 - name: mavencontainer
-                  image: "yogi1995/scotiademo"
+                  image: "yogi1995/scotiademo:${buildNumber}"
                   ports:
                           - containerPort: 8080
 ---
