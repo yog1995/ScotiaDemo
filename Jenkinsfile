@@ -1,4 +1,5 @@
 node{
+	echo "Jenkins Home ${env.JENKINS_HOME}"
         def buildNumber = BUILD_NUMBER
 	def Maven = tool name: "Maven"
 	
