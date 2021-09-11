@@ -20,8 +20,7 @@ node{
 		}
 	}
 	stage('Build Docker Image'){
-		withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]){
-			sh "docker login -u yogi1995 -p ${DockerHub}"
+		sh "docker build -t yogi1995/scotiademo ."
 		}
 	}
 	stage('Image Push to DockerHub'){
