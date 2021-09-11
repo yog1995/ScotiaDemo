@@ -21,7 +21,6 @@ node{
 	}
 	stage('Build Docker Image'){
 		sh "docker build -t yogi1995/scotiademo ."
-		}
 	}
 	stage('Image Push to DockerHub'){
 		 bat "docker push yogi1995/scotiademo"
