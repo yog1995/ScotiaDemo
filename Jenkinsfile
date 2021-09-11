@@ -18,11 +18,11 @@ node{
 	
 	stage('Build Docker Image'){
 		bat "docker login -u yogi1995 -p 9100732718Y@c"
-        bat "docker build -t yogi1995/scotiademo:${buildNumber} ."
+        bat "docker build -t yogi1995/scotiademo ."
 	}
 	
 	stage('Image Push to DockerHub'){
-		 bat "docker push yogi1995/scotiademo:${buildNumber}"
+		 bat "docker push yogi1995/scotiademo"
 	}
 	
 	stage('Tomcat Push'){
