@@ -15,7 +15,7 @@
 		<name>Mithun Technologies</name>
 		<url>http://mithuntechnologies.com/</url>
 	</organization>
-	
+
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<spring.version>5.1.2.RELEASE</spring.version>
@@ -83,6 +83,7 @@
 		</dependency>
 		
 		<!-- provided dependencies -->
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -94,16 +95,16 @@
 	
 	<distributionManagement>
 	
-		<repository>
+	    <repository>
 	      <id>nexus</id>
-	      <name>Scotia_Demo-Release</name>
-	      <url>http://3.22.224.189:8081/repository/Scotia_Demo-Release/</url>
+	      <name>Scotia_Demo_Release</name>
+	      <url>http://3.22.224.189:8081/repository/Scotia_Demo-Release//</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Scotia_Demo-Snapshot</name>
-	      <url>http://3.22.224.189:8081/repository/Scotia_Demo-Snapshot/</url>
+	      <name>Scotia_Demo_Snapshot</name>
+	      <url>http://3.22.224.189:8081/repository/Scotia_Demo-Snapshot//</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
