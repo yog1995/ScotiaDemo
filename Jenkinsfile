@@ -17,8 +17,9 @@ node{
     }
 	
 	stage('Build Docker Image'){
-		withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')])
-		bat "docker login -u yogi1995 -p ${DockerHub}"
+		withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]){
+			bat "docker login -u yogi1995 -p ${DockerHub}"
+		}
         bat "docker build -t yogi1995/scotiademo ."
 	}
 	
