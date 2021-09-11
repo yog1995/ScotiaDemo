@@ -31,7 +31,7 @@ node{
 		kubernetesDeploy (
 			configs: 'maven.yml', 
 			kubeConfig: [path: ''], 
-			kubeconfigId: 'K8-Cluster', 
+			kubeconfigId: 'K8-config', 
 			secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], 
 			textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
 		)
