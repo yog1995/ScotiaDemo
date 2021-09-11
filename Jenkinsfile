@@ -17,7 +17,7 @@ node{
     }
 	
 	stage('Build Docker Image'){
-		bat "docker login -u yogi1995 -p 9100732718Y@c"
+		bat "docker login -u yogi1995 --password-stdin 9100732718Y@c"
         bat "docker build -t yogi1995/scotiademo ."
 	}
 	
