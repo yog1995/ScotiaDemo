@@ -10,9 +10,10 @@ node{
 	stage('Maven Build'){
 		sh "${Maven}/bin/mvn clean package"
 	}
+	stage('Uploading to Nexus')
 	stage('Deploying to Tomcat'){
 		sshagent(['Tomcat']) {
-   			sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@18.190.154.239:/opt/apache-tomcat-9.0.52/webapps/"
+   			sh "scp -o StrictHostKeyChecking=no target/maven-web-application*.war ec2-user@18.190.154.239:/opt/apache-tomcat-9.0.52/webapps/"
 		}
 	}
 			
