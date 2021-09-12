@@ -22,15 +22,15 @@ node{
 		withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]){
 			sh "docker login -u yogi1995 -p ${DockerHub}"
 		}
-		sh "docker build -t yogi1995/scotiademo:${buildNumber} ."
+		sh "docker build -t yogi1995/scotiademo ."
 	}
 	stage('Image Push to DockerHub'){
-		sh "docker push yogi1995/scotiademo:${buildNumber}"
+		sh "docker push yogi1995/scotiademo"
 	}
 	stage('Deployment in Docker server'){
 		sshagent(['Docker']) {
     			sh "ssh -o StrictHostKeyChecking=no ubuntu@18.118.9.192 docker rm -f maven || true"
-			sh "ssh -o StrictHostKeyChecking=no ubuntu@18.118.9.192 docker run -d -p 8082:8080 --name maven yogi1995/scotiademo:${buildNumber}"
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@18.118.9.192 docker run -d -p 8082:8080 --name maven yogi1995/scotiademo"
 		}
 	}
 	stage('Deploy to K8 Cluster'){
