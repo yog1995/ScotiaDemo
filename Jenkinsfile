@@ -30,7 +30,7 @@ node{
 	stage('Deployment in Docker server'){
 		sshagent(['Docker']) {
     			sh "ssh -o StrictHostKeyChecking=no ubuntu@18.118.9.192 docker rm -f maven || true"
-			sh "ssh -o StrictHostKeyChecking=no ubuntu@18.118.9.192 docker run -d -p 8082:8081 --name maven yogi1995/scotiademo:${buildNumber}"
+			sh "ssh -o StrictHostKeyChecking=no ubuntu@18.118.9.192 docker run -d -p 8082:8080 --name maven yogi1995/scotiademo:${buildNumber}"
 		}
 	}
 	/*stage('Deploy to K8 Cluster'){
