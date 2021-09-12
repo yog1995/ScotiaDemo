@@ -1,17 +1,23 @@
 apiVersion: v1
-kind: Pod
+kind: ReplicationController
 metadata:
-        name: mavenapp
-        namespace: default
-        labels:
-                app: maven
-
+        name: mavenapprc
 spec:
-        containers:
-                - name: mavencontainer
-                  image: "yogi1995/scotiademo"
-                  ports:
+        replicas: 2
+        selector:
+                app: maven
+        template:
+                metadata:
+                        name: mavenapp
+                        labels:
+                                app: maven
+                spec:
+                    containers:
+                    - name: mavencontainer
+                      image: "yogi1995/scotiademo"
+                      ports:
                           - containerPort: 8080
+
 ---
 apiVersion: v1
 kind: Service
@@ -26,4 +32,3 @@ spec:
                 - port: 80
                   targetPort: 8080
                   nodePort: 32162
-
