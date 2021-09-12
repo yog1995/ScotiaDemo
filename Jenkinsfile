@@ -1,5 +1,4 @@
 node{
-	def buildNumber = BUILD_NUMBER
 	def Maven = tool name: "Maven"
 	
 	stage('Code Checkout'){
