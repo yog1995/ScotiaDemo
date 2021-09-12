@@ -1,0 +1,13 @@
+provider "aws"{
+  region = "us-east-2"
+}
+
+resource "aws_instance" "tTest" {
+    ami = "ami-0ba62214afa52bec7"
+    instance_type = "t2.micro"
+    security_groups = ["launch-wizard-15"]
+    key_name = "Demo"
+    tags = {
+       Name = "Server by TF"
+    }
+}
