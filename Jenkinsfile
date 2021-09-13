@@ -12,6 +12,7 @@ node{
 	//stage('SonarQube Report'){
 		//sh "${Maven}/bin/mvn sonar:sonar"
 	//}
+	//
 	
 	stage('Uploading to Nexus'){
 		sh "${Maven}/bin/mvn deploy"
