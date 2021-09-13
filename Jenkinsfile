@@ -9,11 +9,10 @@ node{
 		sh "${Maven}/bin/mvn clean package"
 	}
 	
-	//stage('SonarQube Report'){
-		//sh "${Maven}/bin/mvn sonar:sonar"
-	//}
-	//
-	
+	stage('SonarQube Report'){
+		sh "${Maven}/bin/mvn sonar:sonar"
+	}
+		
 	stage('Uploading to Nexus'){
 		sh "${Maven}/bin/mvn deploy"
 	}
