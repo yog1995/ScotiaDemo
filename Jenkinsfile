@@ -2,6 +2,7 @@ node{
 	def Maven = tool name: "Maven"
 	
 	stage('Code Checkout'){
+		git branch: 'main', 
 		credentialsId: 'GitHub', 
 		url: 'https://github.com/yog1995/Scotia_Demo.git'
 	}
